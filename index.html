@@ -180,7 +180,9 @@
                     
                     <div>
                         <label class="block text-sm font-bold text-slate-700 mb-2">📚 快捷模板</label>
-                        <div class="grid grid-cols-2 gap-2">
+                        
+                        <!-- 通用模板 -->
+                        <div class="grid grid-cols-2 gap-2 mb-3">
                             <button class="template-btn aegis-card-sketchy p-3 text-left" data-template="math">
                                 <span class="text-lg">📊</span>
                                 <span class="text-xs font-bold block mt-1">数学函数</span>
@@ -196,6 +198,27 @@
                             <button class="template-btn aegis-card-sketchy p-3 text-left" data-template="timeline">
                                 <span class="text-lg">📅</span>
                                 <span class="text-xs font-bold block mt-1">历史时间轴</span>
+                            </button>
+                        </div>
+                        
+                        <!-- 经济学模板 -->
+                        <label class="block text-xs font-bold text-brand-600 mb-2">💰 经济学专区</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="template-btn aegis-card-sketchy p-3 text-left border-brand-200" data-template="supply-demand">
+                                <span class="text-lg">📈</span>
+                                <span class="text-xs font-bold block mt-1">供需曲线</span>
+                            </button>
+                            <button class="template-btn aegis-card-sketchy p-3 text-left border-brand-200" data-template="cost-curves">
+                                <span class="text-lg">📉</span>
+                                <span class="text-xs font-bold block mt-1">成本曲线</span>
+                            </button>
+                            <button class="template-btn aegis-card-sketchy p-3 text-left border-brand-200" data-template="is-lm">
+                                <span class="text-lg">🏦</span>
+                                <span class="text-xs font-bold block mt-1">IS-LM 模型</span>
+                            </button>
+                            <button class="template-btn aegis-card-sketchy p-3 text-left border-brand-200" data-template="ad-as">
+                                <span class="text-lg">📊</span>
+                                <span class="text-xs font-bold block mt-1">AD-AS 模型</span>
                             </button>
                         </div>
                     </div>
@@ -413,10 +436,29 @@ Output ONLY the <svg>...</svg> code, nothing else.`;
 
         // ========== Templates ==========
         const TEMPLATES = {
+            // 通用模板
             math: { topic: '二次函数 y = x²', desc: '展示抛物线图像，动态标注顶点 (0,0)，使用深色背景和紫色曲线，曲线要有绘制动画' },
             neural: { topic: '人工神经网络结构', desc: '展示3层神经网络：输入层3个节点，隐藏层4个节点，输出层1个节点，用连线表示权重，有数据流动动画' },
             physics: { topic: '动量守恒定律', desc: '两个小球碰撞：左边红球向右移动撞击静止的蓝球，碰撞后蓝球向右移动，红球停止，展示动量传递' },
-            timeline: { topic: '人工智能发展史', desc: '水平时间轴从1956到2024，标注：1956达特茅斯、1997深蓝、2016AlphaGo、2022ChatGPT，节点依次点亮' }
+            timeline: { topic: '人工智能发展史', desc: '水平时间轴从1956到2024，标注：1956达特茅斯、1997深蓝、2016AlphaGo、2022ChatGPT，节点依次点亮' },
+            
+            // 经济学模板
+            'supply-demand': { 
+                topic: '微观经济学：供需曲线', 
+                desc: '展示市场均衡：向右下倾斜的红色需求曲线(D)，向右上倾斜的绿色供给曲线(S)，两曲线交于均衡点E。用虚线标注均衡价格P*和均衡数量Q*，曲线要有绘制动画，均衡点要有脉动效果' 
+            },
+            'cost-curves': { 
+                topic: '微观经济学：成本曲线', 
+                desc: '展示厂商成本曲线：U型的红色边际成本曲线(MC)、U型的绿色平均总成本曲线(ATC)、U型的蓝色平均可变成本曲线(AVC)、递减的紫色平均固定成本曲线(AFC)。MC穿过ATC和AVC的最低点，标注交点' 
+            },
+            'is-lm': { 
+                topic: '宏观经济学：IS-LM 模型', 
+                desc: '展示产品市场和货币市场均衡：向右下倾斜的红色IS曲线(产品市场)，向右上倾斜的绿色LM曲线(货币市场)，交于均衡点E。横轴为国民收入Y，纵轴为利率r，标注均衡利率r*和均衡收入Y*' 
+            },
+            'ad-as': { 
+                topic: '宏观经济学：AD-AS 模型', 
+                desc: '展示总需求总供给模型：向右下倾斜的蓝色总需求曲线(AD)，垂直的红色长期总供给曲线(LRAS)，向右上倾斜的橙色短期总供给曲线(SRAS)。横轴为实际GDP(Y)，纵轴为价格水平(P)，标注长期均衡点' 
+            }
         };
 
         const STYLE_HINTS = {
